@@ -52,10 +52,9 @@ select#selectDoc{
  
 
  @media only screen and (max-width: 800px) {
-	 html{
-	
-	 }
-
+	body {
+		background: rgba(#000000, 0.5);
+	}
 
 
 	select#selectDoc{
