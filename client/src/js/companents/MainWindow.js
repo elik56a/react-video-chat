@@ -14,24 +14,26 @@ class MainWindow extends Component {
     return () => this.props.startCall(true, friendID, config);
   }
   render() {
-    const { clientId } = this.props;
-    document.title = `${clientId} - VideoCall`;
+
+    document.title = 'DocLive - Video Chat';
     return (
-      <div className="container main-window">
-        <div>
-          <h3>
-            DocLive is available, start a video call now
+      <section>
+        <div className="container main-window">
+          <div>
+            <h3>
+              DocLive is available, start a video call now
           </h3>
-          <h4>Select Doctor From The List Below</h4>
-        </div>
-        <div>
-          <select style={{ color: "black" }}
+            <h4>Select Online Doctor From The List Below</h4>
+          </div>
+
+          <select id="selectDoc"
             onChange={event => friendID = event.target.value}>
+            <option> Doctos Online: </option>
             {this.props.connectedClients.map((client, index) => {
               return <option value={client} key={index}>{client}</option>
             })}
           </select>
-          <div>
+          <div className='btns'>
             <button
               className="btn-action fa fa-video-camera"
               onClick={this.callWithVideo(true)}
@@ -42,8 +44,9 @@ class MainWindow extends Component {
             />
           </div>
         </div>
-
-      </div>
+        <div>
+        </div>
+      </section>
     );
   }
 }

@@ -85,7 +85,7 @@ class App extends Component {
 
   render() {
     return (
-      <div >
+      <React.Fragment >
         <Header />
         <MainWindow
           clientId={this.state.clientId}
@@ -106,7 +106,7 @@ class App extends Component {
           rejectCall={this.rejectCallHandler}
           callFrom={this.state.callFrom}
         />
-      </div >
+      </ React.Fragment >
     );
   }
 }

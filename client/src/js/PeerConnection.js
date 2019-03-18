@@ -3,7 +3,6 @@ import Emitter from './Emitter';
 import socket from './socket';
 
 const PC_CONFIG = { iceServers: [{ urls: ['stun:stun.l.google.com:19302'] }] };
-
 class PeerConnection extends Emitter {
   /**
      * Create a PeerConnection.
