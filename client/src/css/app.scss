@@ -1,0 +1,69 @@
+$fa-font-path: "~font-awesome/fonts";
+@import "~font-awesome/scss/font-awesome";
+
+$icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
+@import "~bootstrap-sass/assets/stylesheets/bootstrap";
+
+@import "variables";
+@import "shared/base";
+
+html {
+	min-width: 400px;
+	background:url("https://images.unsplash.com/photo-1548992680-54b8ed81c414?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80");
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	text-align: center;
+
+}
+
+body {
+	background: rgba(#000000, 0.3);
+	text-align: center;
+	overflow: hidden;
+
+}
+
+.main-title{
+	text-align: center;
+	font-size: 4rem;
+
+	text-align: center;
+
+}
+.navbar-title{
+	padding: 3rem 30vw;
+	text-align: center;
+	font-size: 2rem;
+	color:#333;
+	font-weight: 500;
+	p{
+		font-size: 1.4rem;
+	}
+}
+.font{
+	display: inline-block;
+	text-align: center;
+}
+
+#root {
+	h3 {
+		margin-top: 0px;
+		color:#333;
+	}
+
+	h4 {
+		margin-top: 1rem;
+		color:#333;
+	}
+}
+
+.btn-action {
+  outline: none;
+  border: none;
+}
+
+
+@import "main-window";
+@import "call-window";
+@import "call-modal";
