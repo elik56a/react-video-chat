@@ -10,7 +10,12 @@ $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
 html {
 	min-width: 400px;
 		background:url("https://images.unsplash.com/photo-1548992680-54b8ed81c414?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80");
-		background-size: cover;
+		background-repeat:no-repeat;
+		-webkit-background-size:cover;
+		-moz-background-size:cover;
+		-o-background-size:cover;
+		background-size:cover;
+		background-position:center;
 }		
 
 body {
