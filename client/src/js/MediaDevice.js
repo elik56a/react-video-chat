@@ -32,6 +32,7 @@ class MediaDevice extends Emitter {
    * @param {String} type - Type of the device
    * @param {Boolean} [on] - State of the device
    */
+
   toggle(type, on) {
     const len = arguments.length;
     if (this.stream) {

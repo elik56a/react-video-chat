@@ -28,7 +28,7 @@ class MainWindow extends Component {
 
           <select id="selectDoc"
             onChange={event => friendID = event.target.value}>
-            <option> Doctos Online: </option>
+            <option> Doctors Online: </option>
             {this.props.connectedClients.map((client, index) => {
               return <option value={client} key={index}>{client}</option>
             })}

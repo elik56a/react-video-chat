@@ -69,7 +69,7 @@ class App extends Component {
         this.setState(newState);
       })
       .on('peerStream', src => this.setState({ peerSrc: src }))
-      //this func is beeing send to the PeerConnection
+      //this func is define in the PeerConnection
       .start(isCaller, config);
   }
 

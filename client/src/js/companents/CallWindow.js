@@ -60,7 +60,6 @@ class CallWindow extends Component {
     const getClass = (icon, type) => classnames(`btn-action fa ${icon}`, {
       disable: !this.state[type]
     });
-
     return this.btns.map(btn => (
       <button
         key={`btn${btn.type}`}
