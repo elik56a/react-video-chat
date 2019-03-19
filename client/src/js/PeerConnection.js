@@ -8,7 +8,7 @@ class PeerConnection extends Emitter {
   /**
      * Create a PeerConnection.
      * @param {String} friendID - ID of the friend you want to call.
-     * onicecandidate: if the listener picks up ice canidate - will distribute that ice to my peers
+     * onicecandidate: if the listener picks up ice canidate - will distribute that ice to the peers
      */
   constructor(friendID) {
     super();
@@ -101,7 +101,7 @@ class PeerConnection extends Emitter {
   /**
    * @param {Object} candidate -ICE Candidate- string descriptions of what we recive from STUN/TURN -THE GLOBAL IP 
    * Creates an RTCIceCandidate object to represent a single ICE candidate
-   * addIceCandidate: when the peers recive candidate - put them on the peerConnection obj
+   * addIceCandidate: when the peers recive candidate - put them on the peerConnection obj -after that- they can talk!!
    */
 
   addIceCandidate(candidate) {
