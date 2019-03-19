@@ -21,8 +21,8 @@ class MainWindow extends Component {
         <div className="container main-window">
           <div>
             <h3>
-              DocLive is available, start a video call now
-          </h3>
+              <strong>  Hello  <em>{this.props.clientId}</em></strong>
+            </h3>
             <h4>Select Online Doctor From The List Below</h4>
           </div>
 

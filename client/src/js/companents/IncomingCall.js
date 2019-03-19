@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'proptypes';
 import classnames from 'classnames';
-//This is a 
+
 
 class IncomingCall extends Component {
   acceptWithVideo(video) {

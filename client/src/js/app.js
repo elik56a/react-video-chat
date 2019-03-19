@@ -28,7 +28,6 @@ class App extends Component {
     this.rejectCallHandler = this.rejectCall.bind(this);
   }
 
-
   // init the socket
   componentDidMount() {
     socket
@@ -45,7 +44,7 @@ class App extends Component {
       .on('request', data => this.setState({ IncomingCall: 'active', callFrom: data.from }))
       .on('disconnect', data => {
         let connectedClients = this.state.connectedClients;
-        connectedClients.splice(connectedClients.indexOf(data.id), 1)
+        connectedClients.splice(connectedClients.indexOf(data.id), 0)
         this.setState({ connectedClients: connectedClients })
       })
 

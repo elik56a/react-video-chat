@@ -21,7 +21,7 @@ class PeerConnection extends Emitter {
     this.mediaDevice = new MediaDevice();
     this.friendID = friendID;
   }
-  /**
+  /** b
    * Starting the call
    * @param {Boolean} isCaller
    * @param {Object} config - configuration for the call {audio: boolean, video: boolean}
