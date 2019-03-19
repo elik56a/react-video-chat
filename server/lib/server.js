@@ -76,4 +76,3 @@ module.exports.run = (config) => {
   io.listen(server, { log: true })
     .on('connection', initSocket);
 };
-

@@ -8,6 +8,7 @@ class PeerConnection extends Emitter {
   /**
      * Create a PeerConnection.
      * @param {String} friendID - ID of the friend you want to call.
+     * onicecandidate: if the listener picks up ice canidate - will distribute that ice to my peers
      */
   constructor(friendID) {
     super();
@@ -25,6 +26,10 @@ class PeerConnection extends Emitter {
    * Starting the call
    * @param {Boolean} isCaller
    * @param {Object} config - configuration for the call {audio: boolean, video: boolean}
+   * //
+   *  - RTCPeerConnection methods:
+   * addStream is  RTCPeerConnection method, adding the strem that we will recive- to the video obj
+   * createOffer is  RTCPeerConnection method to send SDP and recive SDP
    */
 
   start(isCaller, config) {
@@ -52,6 +57,9 @@ class PeerConnection extends Emitter {
     this.off();
     return this;
   }
+  /**
+  crate offer: create SDP , it's promise based.
+  */
 
   createOffer() {
     this.pc.createOffer()
@@ -59,6 +67,9 @@ class PeerConnection extends Emitter {
       .catch(err => console.log(err));
     return this;
   }
+  /**
+    crate answer: include the sdp from the offer + answer.
+  */
 
   createAnswer() {
     this.pc.createAnswer()
@@ -66,6 +77,9 @@ class PeerConnection extends Emitter {
       .catch(err => console.log(err));
     return this;
   }
+  /**
+    setLocalDescription: set the SDP on the PeerConnection - ON BROWSER B.
+  */
 
   getDescription(desc) {
     this.pc.setLocalDescription(desc);
@@ -74,8 +88,9 @@ class PeerConnection extends Emitter {
   }
 
   /**
-   * @param {Object} sdp - Session description
-   * A DOMString containing the SDP describing the session.
+    @param {Object} sdp - Session description protocol
+   RTCSessionDescription: A DOMString containing the SDP describing the session.
+   setRemoteDescription : SETS THE SDP ON BROWSER A.
    */
   setRemoteDescription(sdp) {
     const rtcSdp = new RTCSessionDescription(sdp);
@@ -84,10 +99,10 @@ class PeerConnection extends Emitter {
   }
 
   /**
-   * @param {Object} candidate - ICE Candidate
+   * @param {Object} candidate -ICE Candidate- string descriptions of what we recive from STUN/TURN -THE GLOBAL IP 
    * Creates an RTCIceCandidate object to represent a single ICE candidate
+   * addIceCandidate: when the peers recive candidate - put them on the peerConnection obj
    */
-
 
   addIceCandidate(candidate) {
     if (candidate) {
