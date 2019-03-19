@@ -5,7 +5,7 @@ import socket from './socket';
 import PeerConnection from './PeerConnection';
 import MainWindow from './companents/MainWindow';
 import CallWindow from './companents/CallWindow';
-import CallModal from './companents/CallModal';
+import IncomingCall from './companents/IncomingCall';
 import Header from './companents/Header'
 
 
@@ -16,7 +16,7 @@ class App extends Component {
       clientId: '',
       connectedClients: [],
       callWindow: '',
-      callModal: '',
+      IncomingCall: '',
       callFrom: '',
       localSrc: null,
       peerSrc: null
@@ -28,6 +28,8 @@ class App extends Component {
     this.rejectCallHandler = this.rejectCall.bind(this);
   }
 
+
+  // init the socket
   componentDidMount() {
     socket
       .on('init', data => {
@@ -39,15 +41,19 @@ class App extends Component {
           this.setState({ clientId: data.id })
         }
       })
-      .on('request', data => this.setState({ callModal: 'active', callFrom: data.from }))
+      // Getting call from other Dr.
+      .on('request', data => this.setState({ IncomingCall: 'active', callFrom: data.from }))
       .on('disconnect', data => {
         let connectedClients = this.state.connectedClients;
         connectedClients.splice(connectedClients.indexOf(data.id), 1)
         this.setState({ connectedClients: connectedClients })
       })
+
+      // Calling other Dr.
       .on('call', (data) => {
         if (data.sdp) {
           this.pc.setRemoteDescription(data.sdp);
+          console.log(this.pc.setRemoteDescription(data.sdp));
           if (data.sdp.type === 'offer') this.pc.createAnswer();
         } else this.pc.addIceCandidate(data.candidate);
       })
@@ -60,18 +66,21 @@ class App extends Component {
     this.pc = new PeerConnection(friendID)
       .on('localStream', (src) => {
         const newState = { callWindow: 'active', localSrc: src };
-        if (!isCaller) newState.callModal = '';
+        if (!isCaller) newState.IncomingCall = '';
         this.setState(newState);
       })
       .on('peerStream', src => this.setState({ peerSrc: src }))
+      //this func is beeing send to the PeerConnection
       .start(isCaller, config);
   }
 
+  // when someone call me , and i reject
   rejectCall() {
     socket.emit('end', { to: this.state.callFrom });
-    this.setState({ callModal: '' });
+    this.setState({ IncomingCall: '' });
   }
 
+  // after bee in call, to end the call, isStarter - in the PeerConnection, Boolian.
   endCall(isStarter) {
     if (_.isFunction(this.pc.stop)) this.pc.stop(isStarter);
     this.pc = {};
@@ -100,8 +109,8 @@ class App extends Component {
           mediaDevice={this.pc.mediaDevice}
           endCall={this.endCallHandler}
         />
-        <CallModal
-          status={this.state.callModal}
+        <IncomingCall
+          status={this.state.IncomingCall}
           startCall={this.startCallHandler}
           rejectCall={this.rejectCallHandler}
           callFrom={this.state.callFrom}

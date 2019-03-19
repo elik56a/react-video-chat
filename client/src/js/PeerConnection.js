@@ -3,6 +3,7 @@ import Emitter from './Emitter';
 import socket from './socket';
 
 const PC_CONFIG = { iceServers: [{ urls: ['stun:stun.l.google.com:19302'] }] };
+
 class PeerConnection extends Emitter {
   /**
      * Create a PeerConnection.
@@ -25,6 +26,7 @@ class PeerConnection extends Emitter {
    * @param {Boolean} isCaller
    * @param {Object} config - configuration for the call {audio: boolean, video: boolean}
    */
+
   start(isCaller, config) {
     this.mediaDevice
       .on('stream', (stream) => {
@@ -41,6 +43,7 @@ class PeerConnection extends Emitter {
    * Stop the call
    * @param {Boolean} isStarter
    */
+
   stop(isStarter) {
     if (isStarter) socket.emit('end', { to: this.friendID });
     this.mediaDevice.stop();
@@ -72,15 +75,20 @@ class PeerConnection extends Emitter {
 
   /**
    * @param {Object} sdp - Session description
+   * A DOMString containing the SDP describing the session.
    */
   setRemoteDescription(sdp) {
     const rtcSdp = new RTCSessionDescription(sdp);
     this.pc.setRemoteDescription(rtcSdp);
     return this;
   }
+
   /**
    * @param {Object} candidate - ICE Candidate
+   * Creates an RTCIceCandidate object to represent a single ICE candidate
    */
+
+
   addIceCandidate(candidate) {
     if (candidate) {
       const iceCandidate = new RTCIceCandidate(candidate);

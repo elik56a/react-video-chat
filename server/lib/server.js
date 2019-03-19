@@ -3,7 +3,7 @@ const { createServer } = require('http');
 const app = express();
 const server = createServer(app);
 const io = require('socket.io')(server);
-const haiku = require('./haiku');
+const random = require('./random');
 
 const userIds = {};
 const noop = () => { };
@@ -14,8 +14,8 @@ app.use('/', express.static(`${process.cwd()}/../client`));
  * Random ID until the ID is not in use
  */
 function randomID(callback) {
-  const id = haiku();
-  if (id in userIds) setTimeout(() => haiku(callback), 5);
+  const id = random();
+  if (id in userIds) setTimeout(() => random(callback), 5);
   else callback(id);
 }
 

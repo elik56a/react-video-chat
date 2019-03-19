@@ -37,10 +37,12 @@
 	}
 	
 	#localVideo {
-		bottom: 0;
-		right: 0;
-		width: 20%;
-		height: 20%;
+		bottom: 25px;
+		right: 7px;
+		width: 30%;
+		height: 30%;
+		
+	
 	}
 	
 	#peerVideo {
@@ -55,7 +57,7 @@
 	100% {opacity: 0}
 }
 
-.video-control, .call-modal {
+.video-control, .incoming-call {
 	.btn-action {
 		$height: 50px;
 		height: $height;

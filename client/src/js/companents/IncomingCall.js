@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'proptypes';
 import classnames from 'classnames';
+//This is a 
 
-class CallModal extends Component {
+class IncomingCall extends Component {
   acceptWithVideo(video) {
     const config = { audio: true, video };
     return () => this.props.startCall(false, this.props.callFrom, config);
@@ -10,7 +11,7 @@ class CallModal extends Component {
 
   render() {
     return (
-      <div className={classnames('call-modal', this.props.status)}>
+      <div className={classnames('incoming-call', this.props.status)}>
         <p>
           <span className="caller">{this.props.callFrom}</span> is calling ...
         </p>
@@ -31,11 +32,11 @@ class CallModal extends Component {
   }
 }
 
-CallModal.propTypes = {
+IncomingCall.propTypes = {
   status: PropTypes.string.isRequired,
   callFrom: PropTypes.string.isRequired,
   startCall: PropTypes.func.isRequired,
   rejectCall: PropTypes.func.isRequired
 };
 
-export default CallModal;
+export default IncomingCall;
