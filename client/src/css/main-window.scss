@@ -67,17 +67,17 @@ select#selectDoc{
 
 	.navbar-title{
 		padding: 0.5rem;
-		margin: 0.5rem;
 		text-align: center;
 		font-size: 15px;
 		color:#333;
+		margin: 0;
 		p{
 			display: none;
 		}
 	}
 	.font{
 		margin-top:10px;
-		display: inline-block;
+	
 		text-align: center;
 
 	}
@@ -87,16 +87,18 @@ select#selectDoc{
 		width:100%;
 		height: 100%;
 		text-align: center;
-		margin:1rem auto;
-		margin-left: 0;
+	
 		padding: 05rem;
 		padding-left: 0;
 
 		.btns{
 			margin-left: 6rem;
+			margin-bottom: 5rem;
+			
 		}
 		.btn-action{
 			margin-right: 3rem;
+			margin-bottom: 5rem;
 		}
 	}
 
