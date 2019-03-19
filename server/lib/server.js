@@ -48,7 +48,7 @@ function initSocket(socket) {
         socket.broadcast.emit('init', { id });
       });
     })
-    //
+
     .on('request', (data) => {
       sendTo(data.to, to => to.emit('request', { from: id }));
     })
