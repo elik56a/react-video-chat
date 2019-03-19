@@ -89,7 +89,7 @@ class PeerConnection extends Emitter {
 
   /**
     @param {Object} sdp - Session description protocol
-   RTCSessionDescription: A DOMString containing the SDP describing the session.
+   RTCSessionDescription: describes one end of a connection-or potential connection-and how it's configured.
    setRemoteDescription : SETS THE SDP ON BROWSER A.
    */
   setRemoteDescription(sdp) {
@@ -101,7 +101,7 @@ class PeerConnection extends Emitter {
   /**
    * @param {Object} candidate -ICE Candidate- string descriptions of what we recive from STUN/TURN -THE GLOBAL IP 
    * Creates an RTCIceCandidate object to represent a single ICE candidate
-   * addIceCandidate: when the peers recive candidate - put them on the peerConnection obj -after that- they can talk!!
+   * addIceCandidate: when the peers recive candidate - put them on the peerConnection obj -after that- the browsers can talk!!
    */
 
   addIceCandidate(candidate) {

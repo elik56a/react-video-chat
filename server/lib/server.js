@@ -11,7 +11,7 @@ const noop = () => { };
 app.use('/', express.static(`${process.cwd()}/../client`));
 
 /**
- * Random ID until the ID is not in use
+ * Set User Random ID. if this Id alrady in use, give new one.
  */
 function randomID(callback) {
   const id = random();
@@ -48,6 +48,7 @@ function initSocket(socket) {
         socket.broadcast.emit('init', { id });
       });
     })
+    //
     .on('request', (data) => {
       sendTo(data.to, to => to.emit('request', { from: id }));
     })

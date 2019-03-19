@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 import _ from 'lodash';
-import socket from './socket';
-import PeerConnection from './PeerConnection';
-import MainWindow from './companents/MainWindow';
-import CallWindow from './companents/CallWindow';
-import IncomingCall from './companents/IncomingCall';
-import Header from './companents/Header'
-
+import socket from '../socket';
+import PeerConnection from '../PeerConnection';
+import MainWindow from './MainWindow';
+import CallWindow from './CallWindow';
+import IncomingCall from './IncomingCall';
+import Header from './Header'
 
 class App extends Component {
   constructor(props) {
@@ -32,10 +31,12 @@ class App extends Component {
   componentDidMount() {
     socket
       .on('init', data => {
+        // IF SOMEONE ELSE IS CONNECTED
         if (this.state.clientId != '') {
           let connected = this.state.connectedClients;
           connected.push(data.id)
           this.setState({ connectedClients: connected })
+          //FIRST TIME CONNECT
         } else {
           this.setState({ clientId: data.id })
         }
@@ -56,6 +57,8 @@ class App extends Component {
           if (data.sdp.type === 'offer') this.pc.createAnswer();
         } else this.pc.addIceCandidate(data.candidate);
       })
+
+
       .on('end', this.endCall.bind(this, false))
       .emit('init');
   }

@@ -8,18 +8,8 @@
     "postinstall": "cd client && yarn build",
     "start": "cd server && yarn start"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/nguymin4/react-videocall.git"
-  },
   "engines": {
     "node": "8.11.3",
     "yarn": "1.7.0"
-  },
-  "author": "Minh Son Nguyen",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/nguymin4/react-videocall/issues"
-  },
-  "homepage": "https://github.com/nguymin4/react-videocall#readme"
+  }
 }
