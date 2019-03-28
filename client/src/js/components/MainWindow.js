@@ -50,10 +50,8 @@ class MainWindow extends Component {
     );
   }
 }
-
 MainWindow.propTypes = {
   clientId: PropTypes.string.isRequired,
   startCall: PropTypes.func.isRequired
 };
-
 export default MainWindow;

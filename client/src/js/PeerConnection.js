@@ -4,6 +4,12 @@ import socket from './socket';
 
 const PC_CONFIG = { iceServers: [{ urls: ['stun:stun.l.google.com:19302'] }] };
 
+/**
+ * The procces:
+ * First Peer: 1) getUserMadia Obj. 2)addStream API
+ *             3) Generates SDP     4) CreateOffer to send SDP
+ */
+
 class PeerConnection extends Emitter {
   /**
      * Create a PeerConnection.
@@ -40,12 +46,13 @@ class PeerConnection extends Emitter {
         if (isCaller) socket.emit('request', { to: this.friendID });
         else this.createOffer();
       })
+      // from madiaDevice - after all went well- get the constraint.
       .start(config);
 
     return this;
   }
   /**
-   * Stop the call
+   * Stop the call, if the call alreay start
    * @param {Boolean} isStarter
    */
 
@@ -83,6 +90,7 @@ class PeerConnection extends Emitter {
 
   getDescription(desc) {
     this.pc.setLocalDescription(desc);
+    console.log(this.pc.setLocalDescription(desc));
     socket.emit('call', { to: this.friendID, sdp: desc });
     return this;
   }

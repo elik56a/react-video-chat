@@ -54,12 +54,16 @@ select#selectDoc{
  @media only screen and (max-width: 800px) {
 
 	select#selectDoc{
-		margin-left: 2.2rem;
+		margin-left: 0.7rem;
 	}
 
 	h3, h4{
-		margin-left: 4rem;
+		margin-left: 2rem;
+		
 	
+	}
+	h4{
+		line-height: 1.5;
 	}
 	h3{
 		font-size: 1.8rem;
@@ -81,23 +85,25 @@ select#selectDoc{
 		text-align: center;
 
 	}
-	
+	section{
+		margin-right: 3rem;
+	}
 	.main-window {
 		font-size: 1.2em;
 		width:100%;
 		height: 100%;
 		text-align: center;
 	
-		padding: 05rem;
+		padding: 5rem;
 		padding-left: 0;
 
 		.btns{
-			margin-left: 6rem;
-			margin-bottom: 5rem;
+			margin: 0 auto;
+			width: 100vw;
 			
 		}
 		.btn-action{
-			margin-right: 3rem;
+			// margin-right: 3rem;
 			margin-bottom: 5rem;
 		}
 	}
